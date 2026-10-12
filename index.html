@@ -427,6 +427,24 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
   .manifesto .stick{padding:24px 18px}
 }
 
+/* ===== v6: phone fixes ===== */
+.proof-swipe{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:30px -20px 0;padding:6px 20px 10px}
+.proof-swipe::-webkit-scrollbar{display:none}
+.proof-swipe>*{flex:0 0 86%;scroll-snap-align:center;margin:0!important}
+.proof-swipe .testi-card{align-self:flex-start}
+.swipe-dots{display:flex;justify-content:center;gap:7px;margin-top:14px}
+.swipe-dots i{width:7px;height:7px;border-radius:50%;background:var(--cream-30);transition:all .3s}
+.swipe-dots i.on{width:22px;border-radius:4px;background:var(--gold)}
+@media(max-width:860px){
+  .manifesto{height:auto!important;padding:64px 0}
+  .manifesto .stick{position:static;min-height:0;padding:0 18px}
+  .mani-photo{margin-bottom:6px}
+}
+@media(max-width:600px){
+  .btn{justify-content:center;padding-inline:14px 18px;text-align:center}
+  #island .btn{justify-content:center!important}
+}
+
 /* ===== group page extras ===== */
 .outcomes-flow .outcome-title{font:700 1.15rem/1.45 var(--sans)}
 .outcomes-flow .core p{font-size:.98rem}
@@ -474,9 +492,10 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
 .js .love-card.reveal.in-view{transform:rotate(var(--r,0deg))}
 .js .love-card.reveal.in-view:nth-child(2){transform:translateY(-18px)}
 @media(max-width:820px){
-  .love-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:10px 4px 24px;margin-inline:-20px;padding-inline:20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .love-row::-webkit-scrollbar{display:none}
-  .love-card{flex:0 0 72%;scroll-snap-align:center}
+  .love-row{grid-template-columns:1fr 1fr!important;gap:12px;margin:26px auto 36px}
+  .love-card{padding:4px;border-radius:18px}
+  .love-card img{border-radius:14px}
+  .love-card:nth-child(1){--r:-2deg}.love-card:nth-child(2){--r:2deg!important;transform:rotate(2deg)}
 }
 
 .shot-grid{columns:3 230px;column-gap:16px;margin-top:40px}
@@ -1124,27 +1143,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
 
   var kio; try { kio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in-view'); kio.unobserve(e.target); } }); }, { rootMargin: '0px 0px -10% 0px' }); } catch(e){}
 
-  // v2: kinetic headlines, word by word
-  if (!RM) document.querySelectorAll('h2').forEach(function(h){
-    h.classList.add('kin');
-    var k = 0;
-    (function walk(node){
-      Array.prototype.slice.call(node.childNodes).forEach(function(ch){
-        if (ch.nodeType === 3){
-          var frag = document.createDocumentFragment();
-          ch.textContent.split(/(\s+)/).forEach(function(part){
-            if (!part) return;
-            if (/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(part)); return; }
-            var o = document.createElement('span'); o.className = 'kw';
-            var i = document.createElement('span'); i.textContent = part; i.style.transitionDelay = (k++ * 0.06) + 's';
-            o.appendChild(i); frag.appendChild(o);
-          });
-          ch.parentNode.replaceChild(frag, ch);
-        } else if (ch.nodeType === 1) walk(ch);
-      });
-    })(h);
-    if (kio) kio.observe(h); else h.classList.add('in-view');
-  });
   document.querySelectorAll('.check-row').forEach(function(r){ if (kio) kio.observe(r); else r.classList.add('in-view'); });
   setTimeout(function(){ document.querySelectorAll('.kin,.check-row').forEach(function(el){ if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in-view'); }); }, 2500);
 
@@ -1185,6 +1183,32 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
   // 6. main testimonial wall: 3 columns that drift on their own and can be dragged
   //    (mouse: drag up/down; touch: swipe sideways so page scrolling stays free)
   var wall = document.getElementById('proofMain');
+  if (wall && innerWidth < 700){
+    (function(sw){
+      sw.className = 'proof-swipe';
+      var items = Array.prototype.slice.call(sw.children), cur = 0, touched = 0;
+      var dots = document.createElement('div'); dots.className = 'swipe-dots'; dots.setAttribute('aria-hidden', 'true');
+      items.forEach(function(){ dots.appendChild(document.createElement('i')); });
+      sw.parentNode.insertBefore(dots, sw.nextSibling);
+      function nearest(){
+        var c = sw.getBoundingClientRect(), mid = c.left + c.width / 2, best = 0, bd = 1e9;
+        items.forEach(function(it, i){ var r = it.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd){ bd = d; best = i; } });
+        return best;
+      }
+      function paint(){ cur = nearest(); Array.prototype.forEach.call(dots.children, function(d, i){ d.classList.toggle('on', i === cur); }); }
+      function go(i){
+        var it = items[(i + items.length) % items.length], c = sw.getBoundingClientRect(), r = it.getBoundingClientRect();
+        sw.scrollBy({ left: (r.left + r.width / 2) - (c.left + c.width / 2), behavior: 'smooth' });
+      }
+      var t; sw.addEventListener('scroll', function(){ clearTimeout(t); t = setTimeout(paint, 80); }, { passive: true });
+      ['touchstart', 'pointerdown', 'wheel'].forEach(function(ev){ sw.addEventListener(ev, function(){ touched = Date.now(); }, { passive: true }); });
+      var visible = false;
+      try { new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }, { threshold: .5 }).observe(sw); } catch(e){ visible = true; }
+      if (!RM) setInterval(function(){ if (visible && Date.now() - touched > 6000) go(cur + 1); }, 3800);
+      paint();
+    })(wall);
+    wall = null;
+  }
   if (wall){
     var tiles = Array.prototype.slice.call(wall.children), n = innerWidth < 640 ? 1 : (innerWidth < 980 ? 2 : 3), cols = []; wall.style.gridTemplateColumns = 'repeat(' + n + ',1fr)';
     for (var c = 0; c < n; c++){ var col = document.createElement('div'); col.className = 'proof-col'; cols.push({ el: col, dir: c % 2 ? -1 : 1, speed: 16 + c * 4, off: c * 180, half: 1 }); }
