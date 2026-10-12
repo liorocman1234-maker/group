@@ -444,6 +444,24 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
   #island .btn{justify-content:center!important}
 }
 
+/* ===== v7: uncropped screenshots, uniform swipe frames, tighter phone spacing ===== */
+.proof-tile,.shot-card{padding:7px;background:#EFEAE2}
+.proof-tile img,.shot-card img{border-radius:13px}
+.proof-swipe .proof-tile,.proof-swipe .shot-card{aspect-ratio:5/4;display:flex;align-items:center;justify-content:center;align-self:stretch}
+.proof-swipe .proof-tile img,.proof-swipe .shot-card img{width:100%;height:100%;object-fit:contain}
+body{padding-bottom:84px}
+@media(max-width:860px){
+  .hero{min-height:0;padding-block:40px 36px}
+  .scroll-hint{display:none}
+  .hero-proof{margin-top:30px}
+  section{padding-block:52px 56px}
+  section.tight{padding-block:40px 44px}
+  .manifesto{padding:4px 0 48px}
+  section:has(+ .manifesto){padding-bottom:24px}
+  .hero{padding-bottom:16px}
+  .hero + section{padding-top:36px}
+}
+
 /* ===== group page extras ===== */
 .outcomes-flow .outcome-title{font:700 1.15rem/1.45 var(--sans)}
 .outcomes-flow .core p{font-size:.98rem}
@@ -504,6 +522,9 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
 .love-card:nth-child(1){--r:-3deg}.love-card:nth-child(2){--r:3deg!important;transform:rotate(3deg)}
 .js .love-card.reveal.in-view:nth-child(2){transform:rotate(3deg)!important}
 .love-card img{aspect-ratio:720/1273;object-fit:contain;background:#fff}
+.proof-swipe .shot-card{aspect-ratio:720/1273!important}
+#proofMain2{margin-top:40px}
+@media(max-width:860px){.outcomes-flow{margin-bottom:24px}.x-list{margin-top:0}}
 /* process path */
 .path{position:relative;display:grid;grid-template-columns:1fr 1fr;column-gap:120px;row-gap:26px;margin-top:40px;padding:10px 0}
 .path-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
@@ -586,9 +607,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
     <span class="hero-eyebrow">תפסיקי לחכות שזה יעבוד מעצמו, כי זה לא</span>
     <h1><span class="line-mask"><span>בנית קריירה וחיים שאת גאה בהם.</span></span><span class="line-mask"><span>אז למה את עדיין לא מצליחה לעבור את <span class="mark">הדייט הרביעי</span></span></span><span class="line-mask"><span>ולבנות זוגיות?</span></span></h1>
     <p class="lead reveal">זה לא במקרה. יש <strong>דפוס התנהגות ספציפי</strong> שמונע ממך לייצר <span class="hl">כימיה אמיתית</span>, ולהביא את מי שאת בגרסה הכי טובה. אבל אפשר לפרק אותו.<br><strong>הגיע הזמן לצאת מהלופ של "עוד דייט טוב שלא הפך לכלום", ולבנות את עצמך ככלי שבאמת יכול להחזיק זוגיות כשהיא מגיעה.</strong></p>
-    <div class="btn-wrap reveal">
-      <a href="#הרשמה" class="btn magnetic"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה להפסיק להתפשר</a>
-    </div>
     <div class="hero-proof reveal">
       <div class="stat-card"><div class="stat-num gold-text" data-count="62">62</div><div class="stat-label">מתאמנים עברו את התהליך</div></div>
       <div class="proof-solo"><img decoding="async" src="assets/hero-proof.webp" alt="צילום מסך אמיתי מוואטסאפ — מתאמן מספר שהתהליך פתח אותו לזוגיות שמחה ומאושרת, ממקום בטוח ושלם עם עצמו" loading="lazy"></div>
@@ -620,7 +638,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
     </div>
     <p class="narrow reveal" style="font-size:1.12rem;margin-top:28px">בין אם את "הבחורה הנחמדה" שתמיד מדלגים עליה, ובין אם את מרגישה בלתי נראית לגמרי מול גברים שבאמת מעניינים אותך היום, <strong>אני יכול לעזור.</strong></p>
 
-    <div class="btn-wrap reveal"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה להפסיק להתפשר</a></div>
   </div>
 </section>
 
@@ -638,7 +655,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
         <p class="pain-lead">דייטים הם גם מיומנות נלמדת, ובתהליך לומדים אותה מהר.</p>
         <p class="muted mani-small">הקבוצה כוללת נשים וגברים, אז את לא מנחשת מה עובד. את שומעת את זה ישירות מהמין השני, ולומדת גם מההצלחות של כולם.</p>
         <p class="m-text" id="maniText">זו לא אשמתך שלא נולדת עם הידע הזה. אבל זו <span class="gw-wrap">100% אשמתך</span> אם את לא לומדת אותו עכשיו.</p>
-        <div class="btn-wrap mani-cta" style="justify-content:flex-start;margin-top:26px"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה להפסיק להתפשר</a></div>
       </div>
     </div>
   </div>
@@ -691,7 +707,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
         <p class="testi-text">ליאור היה לא רק מאמן הוא היה שם כאדם בגובה העיניים ותמך לאורך כל הדרך- לקח אותי לרמה ולמחויבות שלא הכרתי בעצמי, נתן לי <strong>אומץ ובטחון</strong> לפעול ולעשות מתוך אמון מלא ביכולת שלי. היה כל כך כיף ועבר מהר מידי</p>
       </div>
     </div>
-    <div class="btn-wrap reveal"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה להפסיק להתפשר</a></div>
   </div>
 </section>
 
@@ -707,7 +722,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
       <div class="check-row reveal"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-text"><strong>משימות הטמעה</strong> שהופכים את מה שעולה במפגשים ליישום בפועל</div></div>
       <div class="check-row reveal"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-text"><strong>גישה לאפליקציית המתאמנים שלי</strong> שמרכזת את כל התהליך במקום אחד ושומרת עלייך ברצף גם בין מפגש למפגש</div></div>
     </div>
-    <div class="btn-wrap reveal"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה להפסיק להתפשר</a></div>
   </div>
 </section>
 
@@ -728,7 +742,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
       <article class="step reveal"><div class="step-top"><span class="step-tag">מפגש 9 · פרונטלי</span></div><h3>ויסות לחץ בדייט</h3><p>נלמד איך לשלוט על רמת הלחץ בדייט, כדי שנצליח <strong>להביא את מי שאנחנו באמת</strong>.</p></article>
       <article class="step reveal personal"><div class="step-top"><span class="step-tag">בונוס</span><span class="step-badge">מפגש אישי</span></div><h3>סיכום התהליך</h3><p>מפגש <strong>סיכום אישי</strong> לתהליך כולו.</p></article>
     </div>
-    <div class="btn-wrap reveal"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה להפסיק להתפשר</a></div>
   </div>
 </section>
 
@@ -783,7 +796,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
       <article class="spot reveal b3"><div class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9B65A" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>ישיר וכנה</h3><p>אני כאן לחגוג איתך הצלחות, אבל גם <strong>להגיד לך את האמת</strong> כשאת לא ממצה את הפוטנציאל שלך. אני אגיד לך מה שהחברים שלך לא יגידו, כדי שסוף סוף תשברי את ההרגלים הרעים.</p></article>
       <article class="spot reveal b4"><div class="ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9B65A" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 12h6M9 16h6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>אסטרטגי ומעשי</h3><p>זה לא עוד שיחת נפש, וגם לא עצה של "פשוט תהיי עצמך" בדייט. זה <strong>הצבת מטרות ברורות ותוכנית עבודה</strong> מבוססת מדע השינוי ההתנהגותי, עם <strong>אסטרטגיות וטיפים ספציפיים</strong> שאת יכולה ליישם כבר בדייט הבא.</p></article>
     </div>
-    <div class="btn-wrap reveal"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה ליצור זוגיות בריאה</a></div>
   </div>
 </section>
 
@@ -814,7 +826,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
         </div>
       </div>
     </div>
-    <div class="btn-wrap reveal"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה ליצור זוגיות בריאה</a></div>
   </div>
 </section>
 
@@ -832,7 +843,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
       <div class="check-row"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-text">את נמנעת מדייטים כמעט לגמרי בזמן האחרון, כי קל יותר לא להתמודד עם זה בכלל</div></div>
       <div class="check-row"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-text">את שמה לב שאת "מוכרת את עצמך" בדייט, במקום פשוט להיות</div></div>
       <div class="check-row"><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-text">את מוכנה להפסיק לחשוב על מה השתבש בכל דייט, ולהתחיל לפעול אחרת בפועל</div></div>
-      <div class="btn-wrap" style="justify-content:flex-start"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה ליצור זוגיות בריאה</a></div>
     </div>
   </div>
 </section>
@@ -871,19 +881,18 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
         <p class="testi-text">הגעתי לליאור במטרה להשתחרר מהצבא, לופ שאני נמצא בו כבר שנים, והתהליך בסוף בכלל התעסק במערכות היחסים שלי, גיליתי שאני לא במקום שאני רוצה- ברמה הזוגית והחברתית, התהליך עזר לי לבסס את הבטחון העצמי שלי מחדש, לבנות תוכנית עבודה נכונה לבניית העסק ושחרור מהצבא, במקביל לתחזוק הזוגיות שלי. <strong>לגמרי שינה את חיי בכל הפרמטרים</strong>.</p>
       </div>
     </div>
-    <div class="shot-grid">
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5031.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5035.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5038.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5042.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5044.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5045.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5049.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5051.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5052.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
-      <figure class="shot-card reveal"><img decoding="async" src="assets/rev-5053.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+    <div class="testi-wall" id="proofMain2">
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5031.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5035.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5038.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5042.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5044.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5045.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5049.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5051.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5052.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
+      <figure class="shot-card"><img decoding="async" src="assets/rev-5053.webp" alt="צילום מסך של הודעת וואטסאפ ממתאמן בתהליך" loading="lazy"></figure>
     </div>
-    <div class="btn-wrap reveal"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה ליצור זוגיות בריאה</a></div>
   </div>
 </section>
 
@@ -989,7 +998,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
       <p><strong>נשמע הגיוני?</strong></p>
       <p>קדימה, הירשמי, ותתחילי לגלות מה הופך אותך למישהי ששווה להכיר, גם אם את בספק שאימון מנטלי יכול בכלל לעזור לך.</p>
       <p>אני מתרגש ממש מכל מה שאנחנו הולכים להשיג יחד!</p>
-      <div class="btn-wrap" style="justify-content:flex-start;margin-top:30px"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>כן, אני מוכנה</a></div>
     </div></div>
     <div class="guarantee-ribbon" aria-hidden="true">
       <svg viewBox="0 0 200 250" width="170" height="213">
@@ -1102,7 +1110,6 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
       <p itemprop="text">תירשמי בטופס למטה. אני אחזור אלייך אישית תוך יום-יומיים לתיאום המחזור הקרוב, ולוודא שזה אכן מתאים לך.</p>
       </div>
     </details>
-    <div class="btn-wrap reveal"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה ליצור זוגיות בריאה</a></div>
   </div>
 </section>
 
@@ -1181,7 +1188,7 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
 
   // 6. main testimonial wall: 3 columns that drift on their own and can be dragged
   //    (mouse: drag up/down; touch: swipe sideways so page scrolling stays free)
-  var wall = document.getElementById('proofMain');
+  document.querySelectorAll('#proofMain, #proofMain2').forEach(function(wall){
   if (wall && innerWidth < 700){
     (function(sw){
       sw.className = 'proof-swipe';
@@ -1257,6 +1264,7 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
       requestAnimationFrame(tick);
     })(prev);
   }
+  });
 
   // 2. manifesto: wrap words so they light up with scroll progress
   var mt = document.getElementById('maniText'), words = [];
@@ -1303,8 +1311,8 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
     }
     if (island && priceCard){
       var pr = priceCard.getBoundingClientRect(), onPrice = pr.top < innerHeight && pr.bottom > 0;
-      var mr = mani ? mani.getBoundingClientRect() : null, onMani = mr && mr.top < innerHeight * .5 && mr.bottom > innerHeight * .5;
-      var show = scrollY > innerHeight * .9 && !onPrice && !onMani;
+      var typing = document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+      var show = !typing;
       island.classList.toggle('show', show);
       island.setAttribute('aria-hidden', show ? 'false' : 'true');
       island.querySelector('a').tabIndex = show ? 0 : -1;
@@ -1312,6 +1320,7 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
   }
   addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   addEventListener('resize', onScroll);
+  document.addEventListener('focusin', onScroll); document.addEventListener('focusout', function(){ setTimeout(onScroll, 50); });
   onScroll();
 })();
 
