@@ -111,7 +111,7 @@ h1{font:900 var(--fs-hero)/1.1 var(--display);letter-spacing:-.01em;text-wrap:ba
 h2{font:700 var(--fs-h2)/1.18 var(--display);text-wrap:balance;margin-bottom:28px}
 h3{font:700 clamp(1.25rem,1.1rem + .6vw,1.6rem)/1.35 var(--sans)}
 p{text-wrap:pretty}
-.gold-text,.mark{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gold-text,.mark{color:#E2C374}
 .hl{color:var(--gold-hi);font-weight:700}
 strong{color:var(--cream);font-weight:700}
 .eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--gold);font:600 .82rem/1.4 var(--sans);letter-spacing:.2em;margin-bottom:18px}
@@ -231,7 +231,7 @@ strong{color:var(--cream);font-weight:700}
 .module{position:sticky;top:calc(84px + var(--i)*22px);margin-bottom:22vh;border-radius:30px;padding:6px;background:rgba(255,255,255,.03);box-shadow:inset 0 0 0 1px var(--cream-07),0 -30px 60px -30px rgba(0,0,0,.75)}
 .module:last-child{margin-bottom:0}
 .module-in{border-radius:24px;min-height:300px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;padding:48px 52px;background:linear-gradient(150deg,#1B2A4A 0%,#0E1528 72%);box-shadow:inset 0 1px 0 rgba(244,239,226,.08),inset 0 0 0 1px var(--gold-line)}
-.module-icon{font:900 clamp(4rem,3rem + 4vw,7rem)/1 var(--sans);font-variant-numeric:tabular-nums;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.module-icon{font:900 clamp(4rem,3rem + 4vw,7rem)/1 var(--sans);font-variant-numeric:tabular-nums;color:#E2C374}
 .module-days{display:inline-block;font:600 .8rem var(--sans);letter-spacing:.16em;color:var(--gold);margin-bottom:10px}
 .module-title{font:700 clamp(1.3rem,1.1rem + .9vw,1.9rem)/1.35 var(--display);margin-bottom:12px}
 .module-desc{color:var(--cream-80);max-width:60ch}
@@ -277,7 +277,7 @@ strong{color:var(--cream);font-weight:700}
 .countdown-box{width:84px;padding:14px 0 10px;border-radius:16px;background:rgba(255,255,255,.03);box-shadow:inset 0 0 0 1px var(--gold-line)}
 .countdown-num{display:block;font:800 2rem/1 var(--sans);font-variant-numeric:tabular-nums}
 .countdown-unit{font-size:.78rem;color:var(--cream-62)}
-.price-main{font:900 clamp(5rem,3.6rem + 6vw,8.5rem)/1 var(--sans);font-variant-numeric:tabular-nums;margin-top:26px;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.price-main{font:900 clamp(5rem,3.6rem + 6vw,8.5rem)/1 var(--sans);font-variant-numeric:tabular-nums;margin-top:26px;color:#E2C374}
 .price-main .cur{font-size:.42em;vertical-align:.95em;margin-inline-start:.08em;font-weight:700}
 .price-sub{color:var(--cream-62);margin-top:8px}
 .price-card .btn{width:100%;justify-content:center}
@@ -365,8 +365,7 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
 @media(max-width:820px){.research-card.clip:nth-child(2){margin-top:0}}
 
 /* ===== v2: outline-to-fill line ===== */
-.js .outline-fill{color:transparent;-webkit-text-stroke:1px rgba(244,239,226,.55);background:linear-gradient(90deg,var(--cream),var(--cream)) no-repeat right/0% 100%;-webkit-background-clip:text;background-clip:text;transition:background-size 1.6s var(--ease) .3s,opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
-.js .outline-fill.in-view{background-size:100% 100%}
+.outline-fill{color:var(--cream)}
 
 /* ===== v2: drawn check marks ===== */
 .js .check-icon path{stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .7s var(--ease) .25s}
@@ -636,9 +635,9 @@ footer.site{padding:44px 20px 120px;text-align:center;color:var(--cream-62);font
       </div>
       <div class="mani-copy">
         <h2 class="mani-h">אבל זה לא רק <span class="mark">עבודה פנימית</span></h2>
-        <p class="pain-lead">מעבר לפירוק הדפוס שחוסם אותך, דייטים הם גם מיומנות נלמדת, ואנחנו לומדים לשלוט בה מהר במסגרת התהליך, איך?</p>
-        <p class="muted mani-small">הקבוצה כוללת גם נשים וגם גברים, כך שאת לא מנחשת מה עובד אלא שומעת את זה ישירות, בשיח אמיתי עם המין השני. ובמקביל, את גם לומדת מהאתגרים וההצלחות של כל שאר אנשי הקבוצה, לא רק מהניסיון שלך.</p>
-        <p class="m-text" id="maniText">אז תפסיקי להלקות את עצמך על כך שלא נולדת עם הידע איך לצאת לדייטים. זו באמת לא אשמתך. אבל זו כן, <span class="gw-wrap">100% אשמתך</span>, אם את לא טורחת ללמוד את זה עכשיו.</p>
+        <p class="pain-lead">דייטים הם גם מיומנות נלמדת, ובתהליך לומדים אותה מהר.</p>
+        <p class="muted mani-small">הקבוצה כוללת נשים וגברים, אז את לא מנחשת מה עובד. את שומעת את זה ישירות מהמין השני, ולומדת גם מההצלחות של כולם.</p>
+        <p class="m-text" id="maniText">זו לא אשמתך שלא נולדת עם הידע הזה. אבל זו <span class="gw-wrap">100% אשמתך</span> אם את לא לומדת אותו עכשיו.</p>
         <div class="btn-wrap mani-cta" style="justify-content:flex-start;margin-top:26px"><a href="#הרשמה" class="btn"><span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1409" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>אני רוצה להפסיק להתפשר</a></div>
       </div>
     </div>
