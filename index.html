@@ -584,6 +584,7 @@ body{padding-bottom:84px}
 .consent-field input{flex:none;width:20px;height:20px;margin-top:3px;accent-color:#D9B65A}
 .consent-field a{color:var(--gold-hi)}
 .quiz-thankyou{text-align:center;padding:10px 0}
+.cohort-strip{display:table;margin:0 auto 16px;padding:7px 18px;border:1px solid var(--gold);border-radius:999px;color:var(--gold-hi);font-weight:700;font-size:.98rem;letter-spacing:.01em}
 .quiz-subhead{font:700 1.3rem/1.4 var(--display);margin-bottom:14px}
 .quiz-note-title{color:var(--gold);font-weight:700;margin-bottom:6px}
 .quiz-note-body{color:var(--cream-80)}
@@ -667,7 +668,7 @@ fbq('track','ViewContent',{content_name:'group_process',currency:'ILS',value:330
       <div class="mani-copy">
         <h2 class="mani-h">אבל זה לא רק <span class="mark">עבודה פנימית</span></h2>
         <p class="pain-lead">דייטים הם גם מיומנות נלמדת, ובתהליך לומדים אותה מהר.</p>
-        <p class="muted mani-small">הקבוצה כוללת נשים וגברים, אז את לא מנחשת מה עובד. את שומעת את זה ישירות מהמין השני, ולומדת גם מההצלחות של כולם.</p>
+        <p class="muted mani-small">הקבוצה לנשים בלבד, כך שאת בחדר עם נשים שמבינות אותך בדיוק. ואני מביא לשם את הצד שלו, ישירות מהמין השני, ואת לומדת גם מההצלחות של כולן.</p>
         <p class="m-text" id="maniText">זו לא אשמתך שלא נולדת עם הידע הזה. אבל זו <span class="gw-wrap">100% אשמתך</span> אם את לא לומדת אותו עכשיו.</p>
       </div>
     </div>
@@ -932,6 +933,7 @@ fbq('track','ViewContent',{content_name:'group_process',currency:'ILS',value:330
 
       <div class="price-divider"></div>
 
+      <div class="cohort-strip">מחזור ינואר · נשים בלבד · 4 מקומות</div>
       <h3 class="center" id="quiz-heading" style="margin-bottom:20px">שאלון התאמה להצטרפות לתהליך הקבוצתי</h3>
 
       <div id="match-quiz">
@@ -1397,12 +1399,17 @@ document.querySelectorAll('.spot').forEach(function(s){
 
     function val(id){ var el = document.getElementById(id); return el ? el.value : ''; }
     var investmentRaw = val('quiz-investment');
+    var adSources = { 'video-1-hatsad': 'סרטון 1 · הצד שלו', 'video-2-sheket': 'סרטון 2 · השקט', 'video-3-lama': 'סרטון 3 · למה לא אני' };
+    var qs = new URLSearchParams(location.search);
+    var utmContent = qs.get('utm_content') || '';
+    var sourceLabel = adSources[utmContent] || (qs.get('utm_source') ? (qs.get('utm_source') + (utmContent ? ' / ' + utmContent : '')) : 'ישיר / אורגני');
     var payload = {
       fullname: val('quiz-fullname'),
       phone: val('quiz-phone'),
       email: val('quiz-email'),
       age: val('quiz-age'),
-      about: val('quiz-about'),
+      about: val('quiz-about') + '\n\n[הגיעה מ: ' + sourceLabel + ']',
+      source: sourceLabel,
       q1: val('quiz-q1'),
       q2: val('quiz-q2'),
       q3: val('quiz-q3'),
@@ -1421,7 +1428,14 @@ document.querySelectorAll('.spot').forEach(function(s){
       body: JSON.stringify(payload)
     }).catch(function(err){ console.error('Zapier webhook failed:', err); });
 
-    try { fbq('track','Lead',{content_name:'group_application',currency:'ILS',value:3300}); } catch(e) {}
+    try {
+      var amEm = (val('quiz-email') || '').trim().toLowerCase();
+      var amPh = (val('quiz-phone') || '').replace(/\D/g, '');
+      if (amPh.charAt(0) === '0') amPh = '972' + amPh.slice(1);
+      var amFn = ((val('quiz-fullname') || '').trim().split(/\s+/)[0]) || '';
+      fbq('init', '1391079119348972', { em: amEm, ph: amPh, fn: amFn, country: 'il' });
+    } catch(e) {}
+    try { fbq('track','Lead',{content_name:'group_application',currency:'ILS',value:3300},{eventID:'lead_' + Date.now()}); } catch(e) {}
 
     quizForm.style.display = 'none';
     thankyou.style.display = '';
