@@ -1340,10 +1340,12 @@ document.querySelectorAll('.spot').forEach(function(s){
       var amFn = ((val('quiz-fullname') || '').trim().split(/\s+/)[0]) || '';
       fbq('init', '1391079119348972', { em: amEm, ph: amPh, fn: amFn, country: 'il' });
     } catch(e) {}
-    try { fbq('track','Lead',{content_name:'diagnostic_call',currency:'ILS',value:149},{eventID:'lead_' + Date.now()}); } catch(e) {}
+    var leadEid = 'lead_' + Date.now();
+    try { fbq('track','Lead',{content_name:'diagnostic_call',currency:'ILS',value:149},{eventID:leadEid}); } catch(e) {}
+    try { navigator.sendBeacon('https://www.facebook.com/tr?id=1391079119348972&ev=Lead&eid=' + leadEid + '&cd[content_name]=diagnostic_call&cd[currency]=ILS&cd[value]=149&dl=' + encodeURIComponent(location.href)); } catch(e) {}
     try { fbq('track','InitiateCheckout',{content_name:'diagnostic_call',currency:'ILS',value:149}); } catch(e) {}
     form.style.display = 'none'; thankyou.style.display = '';
-    if (GROW_LINK) { setTimeout(function(){ location.href = GROW_LINK; }, 700); }
+    if (GROW_LINK) { setTimeout(function(){ location.href = GROW_LINK; }, 1800); }
     else { thankyou.querySelector('.quiz-subhead').textContent = 'טיוטה: קישור התשלום עוד לא הוגדר'; }
   });
 })();
