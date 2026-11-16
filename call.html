@@ -1239,7 +1239,7 @@ document.querySelectorAll('.spot').forEach(function(s){
       consent_marketing: document.getElementById('quiz-consent-marketing').checked ? 'כן' : 'לא',
       submitted_at: document.getElementById('quiz-consent-timestamp').value
     };
-    fetch(ZAPIER_WEBHOOK_URL, { method: 'POST', body: new URLSearchParams(payload), keepalive: true })
+    fetch(ZAPIER_WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload), keepalive: true })
       .catch(function(err){ console.error('Zapier webhook failed:', err); });
     try {
       var amEm = (val('quiz-email') || '').trim().toLowerCase();
