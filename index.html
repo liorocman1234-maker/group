@@ -1423,8 +1423,8 @@ document.querySelectorAll('.spot').forEach(function(s){
 
     fetch(ZAPIER_WEBHOOK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(payload)
+      body: new URLSearchParams(payload),
+      keepalive: true
     }).catch(function(err){ console.error('Zapier webhook failed:', err); });
 
     try {
